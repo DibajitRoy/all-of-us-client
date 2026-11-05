@@ -2,7 +2,7 @@
 
 **Together for a Better Community.**
 
-**Live Site:** [https://all-of-us-client.vercel.app](https://all-of-us-client.vercel.app/)
+**Live Site:** [https://all-of-us-client.vercel.app](https://all-of-us-client.vercel.app)
 
 All of Us is a community-driven event management platform where people can create, join and track social service events in their local area, from winter clothes distribution in Mirpur to tree plantation drives in Dhanmondi.
 
@@ -59,7 +59,7 @@ All of Us is a community-driven event management platform where people can creat
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/all-of-us-client.git
+git clone https://github.com/DibajitRoy/all-of-us-client.git
 cd all-of-us-client
 npm install
 ```
@@ -81,7 +81,7 @@ For Google login, add `http://localhost:3000` as an authorised JavaScript origin
 
 ### 3. Run the server
 
-The API lives in a separate repository: [all-of-us-server](https://github.com/YOUR_USERNAME/all-of-us-server). Start it first, because private routes depend on it.
+The API lives in a separate repository: [all-of-us-server](https://github.com/DibajitRoy/all-of-us-server). Start it first, because private routes depend on it.
 
 ### 4. Start the client
 
@@ -114,4 +114,6 @@ The client is deployed on Vercel and updates automatically on every push to the 
 
 ## Author
 
-Built by **YOUR NAME** as part of the Social Development Events Platform assignment.
+Built by **Dibajit Roy** as part of the Social Development Events Platform assignment.
+
+- GitHub: [DibajitRoy](https://github.com/DibajitRoy)
