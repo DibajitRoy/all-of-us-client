@@ -109,11 +109,3 @@ public/           Logo, hero image and gallery photos
 ## Deployment
 
 The client is deployed on Vercel and updates automatically on every push to the `main` branch. Set the same environment variables in the Vercel project settings, using the live URLs for `BETTER_AUTH_URL` and `NEXT_PUBLIC_API_URL`.
-
----
-
-## Author
-
-Built by **Dibajit Roy** as part of the Social Development Events Platform assignment.
-
-- GitHub: [DibajitRoy](https://github.com/DibajitRoy)
