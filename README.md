@@ -2,7 +2,7 @@
 
 **Together for a Better Community.**
 
-**Live Site:** [https://all-of-us-client.vercel.app](https://all-of-us-client.vercel.app)
+**Live Site:** [https://all-of-us-client.vercel.app](https://all-of-us-client.vercel.app/)
 
 All of Us is a community-driven event management platform where people can create, join and track social service events in their local area, from winter clothes distribution in Mirpur to tree plantation drives in Dhanmondi.
 
