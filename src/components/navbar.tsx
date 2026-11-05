@@ -2,18 +2,24 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { CalendarCheck, CalendarPlus, HandHeart, ListChecks, LogOut, Menu, UserRound, X } from "lucide-react";
+import { CalendarCheck, CalendarPlus, ListChecks, LogOut, Menu, UserRound, X } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
-  DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem,
-  DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Logo } from "@/components/logo";
 
 const links = [
   { href: "/", label: "Home" },
@@ -33,6 +39,13 @@ export function Navbar() {
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleLogout = async () => {
     await authClient.signOut();
@@ -42,20 +55,23 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-shadow ${
+        scrolled ? "shadow-sm" : ""
+      }`}
+    >
       <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 text-2xl font-bold tracking-tight text-primary">
-          <HandHeart className="size-7" />
-          All of Us
-        </Link>
+        <Logo />
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {links.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  pathname === l.href ? "text-primary" : "text-foreground"
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                  pathname === l.href
+                    ? "bg-secondary text-primary"
+                    : "text-foreground/80 hover:bg-muted hover:text-foreground"
                 }`}
               >
                 {l.label}
@@ -78,7 +94,7 @@ export function Navbar() {
                     title={user.name}
                     className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
-                    <Avatar className="size-9">
+                    <Avatar className="size-9 ring-2 ring-primary/20">
                       <AvatarImage src={user.image ?? undefined} alt={user.name} referrerPolicy="no-referrer" />
                       <AvatarFallback>{user.name.charAt(0).toUpperCase()}</AvatarFallback>
                     </Avatar>
@@ -103,13 +119,13 @@ export function Navbar() {
                   {user.name}
                 </span>
               </span>
-              <Button onClick={handleLogout} className="h-9 px-3">
+              <Button variant="outline" onClick={handleLogout} className="h-9 px-3">
                 <LogOut />
                 <span className="hidden sm:inline">Logout</span>
               </Button>
             </>
           ) : (
-            <Link href="/login" className={buttonVariants({ className: "h-9 px-4" })}>
+            <Link href="/login" className={buttonVariants({ className: "h-9 rounded-full px-5" })}>
               Login
             </Link>
           )}

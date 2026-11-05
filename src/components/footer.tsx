@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { HandHeart, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { Logo } from "@/components/logo";
 import { FacebookIcon, GithubIcon, LinkedinIcon, XIcon } from "@/components/social-icons";
 
 const socials = [
@@ -14,9 +15,7 @@ export function Footer() {
     <footer className="mt-auto bg-gradient-to-br from-[#0b3f4d] to-[#0f6b7a] text-white">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold">
-            <HandHeart className="size-7" /> All of Us
-          </Link>
+          <Logo onDark taglineClassName="block" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/80">
             A community platform where neighbours organise and join social service events,
             from winter clothes drives to tree plantations. Together, we make a difference.
